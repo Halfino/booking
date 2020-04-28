@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Datetimefrom:</strong>
+  <%= @event.dateTimeFrom %>
+</p>
+
+<p>
+  <strong>Datetimeto:</strong>
+  <%= @event.dateTimeTo %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @event.image %>
+</p>
+
+<p>
+  <strong>Descrioptionenglish:</strong>
+  <%= @event.descrioptionEnglish %>
+</p>
+
+<p>
+  <strong>Descriptionczech:</strong>
+  <%= @event.descriptionCzech %>
+</p>
+
+<p>
+  <strong>Forumlink:</strong>
+  <%= @event.forumLink %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

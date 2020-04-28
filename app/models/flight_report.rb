@@ -1,0 +1,2 @@
+class FlightReport < ApplicationRecord
+end

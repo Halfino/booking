@@ -27,3 +27,6 @@
 /config/master.key
 # Ignore environment file
 /.env
+
+.idea
+/.project
