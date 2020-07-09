@@ -12,6 +12,15 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :departure %>
+    <%= form.select :adep_id, Airport.all.collect { |p| [p.icao, p.id] }, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destination %>
+    <%= form.select :ades_id, Airport.all.collect { |p| [p.icao, p.id] }, include_blank: true %>
+  </div>
+  <div class="field">
     <%= form.label :route %>
     <%= form.text_field :route %>
   </div>
@@ -24,6 +33,10 @@
   <div class="field">
     <%= form.label :ctot %>
     <%= form.datetime_select :ctot %>
+  </div>
+
+  <div class="field">
+    <%= form.collection_select :event_id, Event.all, :id, :name %>
   </div>
 
   <div class="actions">

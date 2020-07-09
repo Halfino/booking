@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
-  before_action :set_flight, only: [:show, :edit, :update, :destroy]
+  before_action :set_flight, only: [:show, :edit, :update, :destroy, :book_flight]
   before_action :authenticate_user!
 
   # GET /flights
@@ -11,6 +11,7 @@ class FlightsController < ApplicationController
   # GET /flights/1
   # GET /flights/1.json
   def show
+
   end
 
   # GET /flights/new
@@ -62,6 +63,16 @@ class FlightsController < ApplicationController
     end
   end
 
+  def book_flight
+    @flight.user_id = current_user.id
+    if @flight.save!
+      respond_to do |format|
+        format.html { redirect_to flights_url, notice: 'Flight was booked.' }
+      end
+    end
+
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -71,6 +82,6 @@ class FlightsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def flight_params
-    params.require(:flight).permit(:route, :eobt, :ctot)
+    params.require(:flight).permit(:route, :eobt, :ctot, :event_id, :user_id, :ades_id, :adep_id)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_074155) do
+ActiveRecord::Schema.define(version: 2020_07_09_105223) do
 
   create_table "aircrafts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(version: 2020_04_28_074155) do
     t.datetime "ctot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "event_id"
+    t.bigint "user_id"
+    t.bigint "adep_id"
+    t.bigint "ades_id"
+    t.index ["adep_id"], name: "index_flights_on_adep_id"
+    t.index ["ades_id"], name: "index_flights_on_ades_id"
+    t.index ["event_id"], name: "index_flights_on_event_id"
+    t.index ["user_id"], name: "index_flights_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -83,4 +91,6 @@ ActiveRecord::Schema.define(version: 2020_04_28_074155) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "flights", "events"
+  add_foreign_key "flights", "users"
 end
